@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LearnHub</title>
+</head>
+<body>
+    <h1>📚 LearnHub</h1>
+    <hr>
+
+    <h2>Your Notes</h2>
+
+    {% for note in notes %}
+        <div style="margin-bottom: 20px;">
+            <h3>{{ note.title }}</h3>
+            <p>{{ note.content }}</p>
+            <small>{{ note.created_at }}</small>
+        </div>
+        <hr>
+    {% empty %}
+        <p>No notes yet.</p>
+    {% endfor %}
+
+</body>
+</html>

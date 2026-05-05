@@ -7,18 +7,28 @@
     <h1>📚 LearnHub</h1>
     <hr>
 
-    <h2>Your Notes</h2>
+ <h2>Add Note</h2>
 
-    {% for note in notes %}
-        <div style="margin-bottom: 20px;">
-            <h3>{{ note.title }}</h3>
-            <p>{{ note.content }}</p>
-            <small>{{ note.created_at }}</small>
-        </div>
-        <hr>
-    {% empty %}
-        <p>No notes yet.</p>
-    {% endfor %}
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save Note</button>
+  
+   
+</form>
+<h2>Your Notes</h2>
+
+{% for note in notes %}
+    <div>
+        <h3>{{ note.title }}</h3>
+        <p>{{ note.content }}</p>
+        <a href="{% url 'edit_note' note.id %}">Edit</a>
+    </div>
+{% empty %}
+    <p>No notes yet.</p>
+{% endfor %}
+
+<hr>
 
 </body>
 </html>

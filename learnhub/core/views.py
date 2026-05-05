@@ -36,3 +36,7 @@ def edit_note(request, id):
     return render(request, 'core/edit_note.html', {
         'form': form
     })
+def delete_note(request,id):
+    note = get_object_or_404(Note, id=id)
+    note.delete()
+    return redirect('home')

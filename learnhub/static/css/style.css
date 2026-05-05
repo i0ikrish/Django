@@ -1,0 +1,22 @@
+body {
+    background-color: #1d2a35;
+    color: antiquewhite;
+}
+
+.card {
+    border-radius: 50px;
+    background-color: #0d1721;
+    color: antiquewhite;
+    padding: 50px;
+    max-width: 75%;
+     margin: 0 auto;
+    
+    
+    
+}
+.container_notes {
+     border-radius: 20px;
+    color: antiquewhite;
+
+    
+}

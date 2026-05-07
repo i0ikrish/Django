@@ -16,6 +16,27 @@
       <a class="navbar-brand fw-semibold" href="{% url 'home' %}">
         <i class="bi bi-journal-text me-2"></i>My Notes
       </a>
+      {% if user.is_authenticated %}
+
+<p>
+    Welcome, {{ user.username }}
+</p>
+
+<a href="{% url 'logout' %}" class="btn btn-danger">
+    Logout
+</a>
+
+{% else %}
+
+<a href="{% url 'login' %}" class="btn btn-primary">
+    Login
+</a>
+
+<a href="{% url 'signup' %}" class="btn btn-success">
+    Signup
+</a>
+
+{% endif %}
       <span class="navbar-text small text-white-50">A simple learning platform</span>
     </div>
   </nav>

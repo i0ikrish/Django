@@ -69,3 +69,44 @@ def upload_pdf(request):
         'form': form,
         'documents': documents
     })
+
+@login_required
+def note_detail(request, id):
+
+    note = get_object_or_404(
+        Note,
+        id=id,
+        user=request.user
+    )
+
+    documents = Document.objects.filter(
+        note=note,
+        user=request.user
+    )
+
+    if request.method == 'POST':
+
+        form = DocumentForm(
+            request.POST,
+            request.FILES
+        )
+
+        if form.is_valid():
+
+            doc = form.save(commit=False)
+
+            doc.user = request.user
+            doc.note = note
+
+            doc.save()
+
+            return redirect('note_detail', id=note.id)
+
+    else:
+        form = DocumentForm()
+
+    return render(request, 'core/note_detail.html', {
+        'note': note,
+        'documents': documents,
+        'form': form
+    })

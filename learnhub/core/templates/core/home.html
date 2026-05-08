@@ -47,7 +47,7 @@
           <article class="card app-card shadow-sm note-card">
             <div class="card-body">
               <div class="d-flex justify-content-between align-items-start mb-2">
-                <h5 class="card-title mb-0">{{ note.title }}</h5>
+                <a href="{% url 'note_detail' note.id %}">    {{ note.title }}</a>
                 <small class="text-muted">{{ note.created_at|date:"M d, Y" }}</small>
               </div>
               <p class="card-text text-secondary mb-3" style="white-space: pre-line;">{{ note.content }}</p>

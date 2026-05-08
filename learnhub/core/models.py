@@ -14,6 +14,7 @@ class Note(models.Model):
 
 class Document(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    note = models.ForeignKey(Note,on_delete=models.CASCADE,null=True,blank=True)
     title = models.CharField(max_length=200)
     file = models.FileField(upload_to='pdfs/')
     uploaded_at = models.DateTimeField(auto_now_add=True)
